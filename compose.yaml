@@ -1,0 +1,21 @@
+# `docker network create proxied --internal --ipv6`
+# `docker network create public --ipv6`
+networks:
+  proxied:
+    external: true
+  public:
+    external: true
+
+services:
+  readme_stats:
+    build: .
+    container_name: readme_stats
+    restart: always
+    env_file:
+      - .env
+    networks:
+      - public
+      - proxied
+    expose:
+      - $port
+
