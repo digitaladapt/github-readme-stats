@@ -28,3 +28,10 @@ services:
       start_period: 10s
       timeout: 5s
 
+  # special container, just for watchtower, to monitor underlying image
+  readme_stats_monitor:
+    image: node:lts-alpine
+    container_name: readme_stats_monitor
+    restart: no
+    entrypoint: "/bin/true"
+
