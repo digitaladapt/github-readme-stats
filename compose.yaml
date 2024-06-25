@@ -20,6 +20,7 @@ services:
       - public
     expose:
       - $port
+    init: true
     healthcheck:
       test: wget --no-verbose -O - --tries=1 http://localhost:$$port/?username=digitaladapt | grep 'GitHub Stats' || exit 1
       interval: 60m # hourly
