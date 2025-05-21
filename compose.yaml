@@ -11,7 +11,7 @@ services:
     expose:
       - ${port}
     healthcheck:
-      test: wget --no-verbose -O - --tries=1 http://localhost:$$port/?username=digitaladapt | grep 'GitHub Stats' || exit 1
+      test: wget --no-verbose -O - --tries=1 http://localhost:$$port/?username=$$GH_UN | grep 'GitHub Stats' || exit 1
       interval: 60m # hourly
       retries: 3
       start_interval: 1s
