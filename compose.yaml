@@ -20,9 +20,16 @@ services:
     init: true
     labels:
       - "com.centurylinklabs.watchtower.enable=false" # built, disable watchtower
+    logging:
+      driver: syslog
+      options:
+        tag: readme_stats
     networks:
       - public
     restart: always
+    user: ${USER_ID}:${GROUP_ID}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro # read-only
 
   # allow watchtower to monitor for update to base image, since our container is built
   readme_stats_monitor:
@@ -30,4 +37,5 @@ services:
     entrypoint: "/bin/true"
     image: node:lts-alpine
     restart: no
+    user: ${USER_ID}:${GROUP_ID}
 
