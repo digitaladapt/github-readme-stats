@@ -3,9 +3,9 @@ networks:
     external: true
 
 services:
-  readme_stats:
+  readme-stats:
     build: .
-    container_name: readme_stats
+    container_name: readme-stats
     env_file:
       - .env
     expose:
@@ -20,6 +20,11 @@ services:
     init: true
     labels:
       - "com.centurylinklabs.watchtower.enable=false" # built, disable watchtower
+      - homepage.group=Sites
+      - homepage.name=Github Readme Stats
+      - homepage.icon=github
+      - homepage.href=https://readme.digitaladapt.com
+      - kuma.__docker
     logging:
       driver: syslog
       options:
